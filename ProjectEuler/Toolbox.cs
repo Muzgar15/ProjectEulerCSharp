@@ -23,7 +23,15 @@ namespace ProjectEuler
         {
             if (num % 2 == 0)
             {
-                return false;
+                if(num == 2)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+                
             }
 
             for (int i = 3; i <= Math.Sqrt(num); i = i + 2)
