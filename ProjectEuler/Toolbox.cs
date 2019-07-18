@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace ProjectEuler
 {
@@ -42,6 +43,26 @@ namespace ProjectEuler
                 }
             }
             return true;
+        }
+
+        public static long[] GetDivisors(long num)
+        {
+            List<long> divisors = new List<long>();
+            divisors.Add(1);
+            divisors.Add(num);
+            for (long i = 2; i <= Math.Sqrt(num); i++)
+            {
+                if(num % i == 0)
+                {
+                    divisors.Add(i);
+                    if (i != num / i)
+                    {
+                        divisors.Add(num / i);
+                    }
+                }
+                
+            }
+            return divisors.ToArray();
         }
     }
 }
