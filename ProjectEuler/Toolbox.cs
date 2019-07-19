@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Collections.Generic;
+using System.Numerics;
 
 namespace ProjectEuler
 {
@@ -105,6 +106,50 @@ namespace ProjectEuler
                 
             }
             return divisors.ToArray();
+        }
+
+        public static long BinomialCoefficient(long num1, long num2)
+        {
+            long result = 1;
+            if(num2 > num1)
+            {
+                result = 0;
+                return result;
+            }
+            result = Factorial(num1)/(Factorial(num2)*Factorial(num1-num2));
+            return result;
+        }
+
+        public static BigInteger BinomialCoefficientBig(long num1, long num2)
+        {
+            BigInteger result = new BigInteger(1);
+            if (num2 > num1)
+            {
+                result = BigInteger.Zero;
+                return result;
+            }
+            result = BigInteger.Divide(FactorialBig(num1),BigInteger.Multiply(FactorialBig(num2),FactorialBig(num1 - num2)));
+            return result;
+        }
+        public static long Factorial(long num)
+        {
+            long result = 1;
+            for(int i = 0; i < num; i++)
+            {
+                result *= i + 1;
+            }
+            return result;
+        }
+
+        public static BigInteger FactorialBig(long num)
+        {
+
+            BigInteger result = new BigInteger(1);
+            for (int i = 0; i < num; i++)
+            {
+                result = BigInteger.Multiply(result, i + 1);
+            }
+            return result;
         }
     }
 }
