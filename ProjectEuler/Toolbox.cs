@@ -20,6 +20,48 @@ namespace ProjectEuler
             return true;
         }
 
+        internal static string AddIntegerStrings(string result, string line)
+        {
+            if (Math.Abs(result.Length - line.Length) != 0)
+            {
+                int padding = Math.Abs(result.Length - line.Length);
+                for(int i = 0; i < padding; i++)
+                {
+                    if(result.Length < line.Length)
+                    {
+                        result = "0" + result;
+                    }
+                    else
+                    {
+                        line = "0" + line;
+                    }
+                }
+            }
+            int firstDigit, secondDigit;
+            int remainder = 0;
+            int sum = 0;
+            String temp = "";
+            for(int i = line.Length-1; i >= 0; i--)
+            {
+                sum = 0;
+                firstDigit = (int) Char.GetNumericValue(line[i]);
+                secondDigit = (int) Char.GetNumericValue(result[i]);
+                sum = firstDigit + secondDigit + remainder;
+                remainder = sum / 10;
+                if(sum >= 10)
+                {
+                    sum %= 10;
+                }
+                temp = sum.ToString() + temp;
+            }
+            if(remainder != 0)
+            {
+                temp = remainder.ToString() + temp;
+            }
+
+            return temp;
+        }
+
         public static bool IsPrime(long num)
         {
             if (num % 2 == 0)
