@@ -6,7 +6,7 @@ namespace ProjectEuler
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(Problem20.Solve());
+            Console.WriteLine(Problem21.Solve());
             Console.ReadLine();
         }
     }

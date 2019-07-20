@@ -91,7 +91,10 @@ namespace ProjectEuler
         public static long[] GetDivisors(long num)
         {
             List<long> divisors = new List<long>();
-            divisors.Add(1);
+            if(num != 1)
+            {
+                divisors.Add(1);
+            }
             divisors.Add(num);
             for (long i = 2; i <= Math.Sqrt(num); i++)
             {
@@ -105,6 +108,7 @@ namespace ProjectEuler
                 }
                 
             }
+            divisors.Sort();
             return divisors.ToArray();
         }
 
